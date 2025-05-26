@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import http from "http";
+import cors from "cors";
 
 const PORT = Number(process.env.PORT) || 80;
 
@@ -15,8 +16,16 @@ const quotes = [
     "Be yourself; everyone else is already taken."
 ]
 
+application.use([
+    cors({
+        origin: [ ...process.env.CORS_ORIGINS.split(",").map(origin => origin.trim()) ],
+        methods: ["GET", "POST", "OPTIONS"],
+        credentials: true
+    })
+]);
+
 application.get("/", (_request, response) => {
-    response.send(quotes[Math.floor(Math.random() * quotes.length)]);
+    response.json({ quote: quotes[Math.floor(Math.random() * quotes.length)] });
 });
 
 application.get("/health", (_request, response) => {

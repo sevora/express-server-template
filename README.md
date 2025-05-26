@@ -13,6 +13,12 @@ In a production environment, one would normally use a method other than `npm sta
 - `types/index.d.ts` is the file where you can extend the Express Request object.
 - `environment.d.ts` is the file where you can define the environment variables type definitions.
 
+This is an example of a valid `.env` file placed at the root directory of this project.
+```env
+CORS_ORIGINS="https://domain.com, https://subdomain.domain.com"
+PORT=8000
+```
+
 ## AWS EC2 Deployment Guide
 This is mainly intended for a quick and easy setup when deploying using AWS EC2 instances with an AMI 2023. 
 
@@ -51,9 +57,10 @@ npm install
 
 Then create an environment variable file specifically a `.env`. On the template `PORT` is an environment variable that may or may not be present. 
 
-To define the `PORT`, create `.env` file on the project's root directory as follows (use any terminal text editor such as vim or nano):
+To define the `PORT`, create `.env` file on the project's root directory as follows (use any terminal text editor such as vim or nano). Additionally we define the `CORS_ORIGINS` here which refer to the URL of the web application that will be using the API endpoint by this server:
 ```env
 PORT=8000
+CORS_ORIGINS="https://mywebapp.com" # For development purposes, you may set this to the wildcard "*" 
 ```
 
 ### Running and Updating the Server

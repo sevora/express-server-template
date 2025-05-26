@@ -12,10 +12,12 @@
     "license": "MIT",
     "description": "This is a template for an Express Server",
     "dependencies": {
+        "cors": "^2.8.5",
         "dotenv": "^16.5.0",
         "express": "^5.1.0"
     },
     "devDependencies": {
+        "@types/cors": "^2.8.18",
         "@types/express": "^5.0.1",
         "typescript": "^5.8.3"
     }
